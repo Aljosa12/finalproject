@@ -1,0 +1,7 @@
+{% if user %}
+<h3>email: {{ user.email }}</h3>
+<h3>ime: {{ user.name }}</h3>
+
+{% else %}
+    <p>This user doesn't exist</p>
+{% endif %}
