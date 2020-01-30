@@ -1,9 +1,13 @@
-<h1>All users</h1>
+{% extends "base.html" %}
 
-<ol>
+{% block pagecontent %}
+    <h1>All users</h1>
 
-    {% for user in users %}
-        <li><a href="{{ user.profile_url() }}">{{ user.name }}</a></li>
-    {% endfor %}
+    <ol>
 
-</ol>
+        {% for user in users %}
+            <li><a href="{{ user.profile_url() }}">{{ user.name }}</a></li>
+        {% endfor %}
+
+    </ol>
+{% endblock pagecontent %}

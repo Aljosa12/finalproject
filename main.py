@@ -3,7 +3,7 @@ import hashlib
 
 from flask import Flask, render_template, request, \
     make_response, redirect, url_for
-from models import User, db, message
+from models import User, db, user_message
 
 app = Flask(__name__)
 
@@ -36,11 +36,10 @@ def index_post():
         return response
 
     user_post = request.form.get("user_post")
-    user = message(user_post=user_post)
+    user = user_message(user_post=user_post)
 
     db.add(user)
     db.commit()
-
 
     return render_template("main_page.html", user=user)
 
@@ -84,7 +83,7 @@ def login_post():
 
     return response
 
-cc
+
 @app.route("/profile/")
 def profile_view():
     session_token = request.cookies.get("session_token")

@@ -19,7 +19,7 @@ class User(db.Model):
         return f"/profiles/{self.uid}"
 
 
-class message(db.Model):
+class user_message(db.Model):
     uid = db.Column(db.Integer, primary_key=True)
     user_post = db.Column(db.String)
 
