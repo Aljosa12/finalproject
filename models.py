@@ -23,7 +23,6 @@ class user_message(db.Model):
     uid = db.Column(db.Integer, primary_key=True)
     user_post = db.Column(db.String)
 
-
 """
 class Message(models.Model):
     sender = models.ForeignKey

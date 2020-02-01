@@ -3,9 +3,11 @@ import hashlib
 
 from flask import Flask, render_template, request, \
     make_response, redirect, url_for
-from models import User, db, user_message
+from models import User, db, user_message, init_data
 
 app = Flask(__name__)
+
+#init_data()
 
 db.create_all()
 
@@ -147,9 +149,17 @@ def profile_delete_post():
 
 @app.route("/list", methods=["GET"])
 def list_users():
+    session_token = request.cookies.get("session_token")
+    user = db.query(User).filter_by(session_token=session_token).first()
+    if user is None:
+        response = make_response(
+            redirect(url_for("login"))
+        )
+        return response
+
     users = db.query(User).all()
 
-    return render_template("list_users.html", users=users)
+    return render_template("list_users.html", users=users, user=user)
 
 
 @app.route("/profiles/<user_uid>")
