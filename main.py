@@ -232,7 +232,7 @@ def converter_post():
         answer = stevilo * 10*-3
     else:
         answer = "Hello world"
-    return render_template("converter.html", user=user, answer=answer)
+    return render_template("converter_rezultat.html", user=user, answer=answer)
 
 """""
 @app.route("/send", methods=["GET"])
