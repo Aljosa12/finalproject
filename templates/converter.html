@@ -14,8 +14,9 @@
     <button type="submit" class="btn btn-dark">Submit</button>
     </form>
 
-    {% if not none %}
+    {% if answer none %}
+        <h1>Result</h1>
+    {% else %}
         <h1>{{ stevilo }} seconds  is {{ answer }} {{ enota }}</h1>
-    {% end if %}
-
+    {% endif %}
 {% endblock pagecontent %}
