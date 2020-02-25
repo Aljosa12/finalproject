@@ -204,6 +204,35 @@ def profile_password_post():
 
     return render_template("profile.html", user=user)
 
+
+@app.route("/converter", methods=["GET"])
+def converter():
+    session_token = request.cookies.get("session_token")
+    user = db.query(User).filter_by(session_token=session_token).first()
+    if user is None:
+        response = make_response(
+            redirect(url_for("login"))
+        )
+        return response
+    return render_template("converter.html", user=user)
+
+
+@app.route("/converter", methods=["POST"])
+def converter_post():
+    session_token = request.cookies.get("session_token")
+    user = db.query(User).filter_by(session_token=session_token).first()
+    if user is None:
+        response = make_response(
+            redirect(url_for("login"))
+        )
+        return response
+    enota = request.form.get("ugibanje")
+    stevilo = int(request.form.get("ugibanje"))
+    if str(enota) == "milliseconds":
+        answer = stevilo * 10*-3
+
+    return render_template("converter.html", user=user, answer=answer)
+
 """""
 @app.route("/send", methods=["GET"])
 def profile_edit_get():

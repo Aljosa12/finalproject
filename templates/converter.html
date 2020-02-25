@@ -1,0 +1,18 @@
+{% extends "base.html" %}
+
+
+{% block pagecontent %}
+    <form method="POST">
+        <div class="col">
+            <input type="text" name="ugibanje" class="form-control" placeholder="enter units">
+        </div>
+    </form>
+    <form method="POST">
+        <div class="col">
+            <input type="text" name="ugibanje" class="form-control" placeholder="enter units">
+        </div>
+    </form>
+    <button type="submit" class="btn btn-dark">Submit</button>
+
+    <h1>{{ answer }}</h1>
+{% endblock pagecontent %}
