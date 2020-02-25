@@ -214,7 +214,10 @@ def converter():
             redirect(url_for("login"))
         )
         return response
-    return render_template("converter.html", user=user)
+    stevilo = request.form.get("stevilo")
+    enota = request.form.get("enota")
+    answer = request.form.get("answer")
+    return render_template("converter.html", user=user, stevilo=stevilo, enota=enota, answer=answer)
 
 
 @app.route("/converter", methods=["POST"])
@@ -237,7 +240,7 @@ def converter_post():
     elif str(enota) == "picoseconds":
         answer = stevilo * 10**12
 
-    return render_template("converter_rezultat.html", stevilo=stevilo, enota=enota, user=user, answer=answer)
+    return render_template("converter.html", stevilo=stevilo, enota=enota, user=user, answer=answer)
 
 """""
 @app.route("/send", methods=["GET"])
