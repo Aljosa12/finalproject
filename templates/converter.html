@@ -4,15 +4,14 @@
 {% block pagecontent %}
     <form method="POST">
         <div class="col">
-            <input type="text" name="ugibanje" class="form-control" placeholder="enter units">
+            <input type="text" name="enota" class="form-control" placeholder="enter units">
         </div>
-    </form>
-    <form method="POST">
+
         <div class="col">
-            <input type="text" name="ugibanje" class="form-control" placeholder="enter units">
+            <input type="number" name="stevilo" class="form-control" placeholder="enter value">
         </div>
-    </form>
     <button type="submit" class="btn btn-dark">Submit</button>
+    </form>
 
     <h1>{{ answer }}</h1>
 {% endblock pagecontent %}
