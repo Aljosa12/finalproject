@@ -226,8 +226,8 @@ def converter_post():
             redirect(url_for("login"))
         )
         return response
-    enota = request.form.get("ugibanje")
-    stevilo = int(request.form.get("ugibanje"))
+    enota = request.form.get("enota")
+    stevilo = int(request.form.get("stevilo"))
     if str(enota) == "milliseconds":
         answer = stevilo * 10*-3
     else:
