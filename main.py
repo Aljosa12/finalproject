@@ -230,7 +230,8 @@ def converter_post():
     stevilo = int(request.form.get("ugibanje"))
     if str(enota) == "milliseconds":
         answer = stevilo * 10*-3
-
+    else:
+        answer = "Hello world"
     return render_template("converter.html", user=user, answer=answer)
 
 """""
