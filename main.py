@@ -229,13 +229,13 @@ def converter_post():
     enota = request.form.get("enota")
     stevilo = int(request.form.get("stevilo"))
     if str(enota) == "milliseconds":
-        answer = stevilo * 10**-3
+        answer = stevilo * 10**3
     elif str(enota) == "microseconds":
-        answer = stevilo * 10**-6
+        answer = stevilo * 10**6
     elif str(enota) == "nanoseconds":
-        answer = stevilo * 10**-9
+        answer = stevilo * 10**9
     elif str(enota) == "picoseconds":
-        answer = stevilo * 10**-12
+        answer = stevilo * 10**12
 
     return render_template("converter_rezultat.html", stevilo=stevilo, enota=enota, user=user, answer=answer)
 
