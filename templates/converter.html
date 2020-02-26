@@ -1,20 +1,41 @@
 {% extends "base.html" %}
 
+ {% block header %}
+  <!-- Header -->
+  <header class="bg-primary py-5 mb-5">
+    <div class="container h-100">
+      <div class="row h-100 align-items-center">
+        <div class="col-lg-12">
+          <h1 class="display-4 text-white mt-5 mb-2">Converter</h1>
+          <p class="lead mb-5 text-white-50">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Non possimus ab labore provident mollitia. Id assumenda voluptate earum corporis facere quibusdam quisquam iste ipsa cumque unde nisi, totam quas ipsam.</p>
+        </div>
+      </div>
+    </div>
+  </header>
+  {% endblock header %}
+
 
 {% block pagecontent %}
-    <h2>Choose to which unit you want to convert seconds: milliseconds, microseconds, nanoseconds or picoseconds</h2>
+    <div style="margin-left: 13%;">
+    <h3>1. Choose to which unit you want to convert meters: <br>
+        miles, yards, foots</h3>
     <form method="POST">
-        <div class="col">
+        <div style="width: 30%;" class="col">
             <input type="text" name="enota" class="form-control" placeholder="Type which unit">
         </div>
 
-        <div class="col">
-            <input type="number" name="stevilo" class="form-control" placeholder="Enter how many seconds">
+        <div style="width: 30%;" class="col">
+            <input type="number" name="stevilo" class="form-control" placeholder="Enter how many meters">
         </div>
-    <button type="submit" class="btn btn-dark">Submit</button>
+    <button style="margin-left: 1%; margin-top: 1%;" type="submit" class="btn btn-dark">Submit</button>
     </form>
 
+        {% if uganil %}
+            <h1>{{ stevilo }} meters  is {{ answer }} {{ enota }}</h1>
+        {% else %}
+            <h1>  </h1>
+        {% endif %}
+    </div>
 
-        <h1>{{ stevilo }} seconds  is {{ answer }} {{ enota }}</h1>
 
 {% endblock pagecontent %}
