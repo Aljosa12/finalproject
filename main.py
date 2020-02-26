@@ -217,7 +217,12 @@ def converter():
     stevilo = request.form.get("stevilo")
     enota = request.form.get("enota")
     answer = request.form.get("answer")
-    return render_template("converter.html", user=user, stevilo=stevilo, enota=enota, answer=answer)
+    stevilo_2 = request.form.get("stevilo_2")
+    enota_2 = request.form.get("enota_2")
+    answer_2 = request.form.get("answer_2")
+
+    return render_template("converter.html", user=user, stevilo=stevilo, enota=enota,
+                           answer=answer, stevilo_2=stevilo_2, answer_2=answer_2, enota_2=enota_2)
 
 
 @app.route("/converter", methods=["POST"])
@@ -231,18 +236,20 @@ def converter_post():
         return response
     enota = request.form.get("enota")
     stevilo = int(request.form.get("stevilo"))
-    if str(enota) == "milliseconds":
-        answer = stevilo * 10**3
-    elif str(enota) == "microseconds":
-        answer = stevilo * 10**6
-    elif str(enota) == "nanoseconds":
-        answer = stevilo * 10**9
-    elif str(enota) == "picoseconds":
-        answer = stevilo * 10**12
+    uganil = False
+    if str(enota) == "miles":
+        uganil = True
+        answer = stevilo / 1609
+    elif str(enota) == "yards":
+        uganil = True
+        answer = stevilo * 1.094
+    elif str(enota) == "foots":
+        uganil = True
+        answer = stevilo * 3.281
 
-    return render_template("converter.html", stevilo=stevilo, enota=enota, user=user, answer=answer)
+    return render_template("converter.html", uganil=uganil, stevilo=stevilo, enota=enota, user=user, answer=answer)
 
-"""""
+"""
 @app.route("/send", methods=["GET"])
 def profile_edit_get():
     session_token = request.cookies.get("session_token")
@@ -275,6 +282,5 @@ def message_post():
 
     return render_template("profile.html")
 """
-
 if __name__ == '__main__':
     app.run()
