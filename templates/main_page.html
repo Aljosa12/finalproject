@@ -69,10 +69,10 @@
     </div>
     </div>
 
-    {% for user in users %}
+    {% for sporocilo in users_2 %}
              <div style="width: 50%; margin: auto;">
                 <ul class="list-group">
-                    <li class="list-group-item"><a href="{{ user.profile_url() }}">{{ user.name }}</a></li>
+                    <li class="list-group-item">{{ sporocilo.user_post }}</a></li>
                 </ul>
              </div>
     {% endfor %}

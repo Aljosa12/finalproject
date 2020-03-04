@@ -23,9 +23,9 @@ def index():
         )
         return response
 
-    users = db.query(User).all()
+    users_2 = db.query(user_message).all()
 
-    return render_template("main_page.html", users=users, user=user)
+    return render_template("main_page.html", users_2=users_2, user=user)
 
 
 @app.route("/", methods=["POST"])
