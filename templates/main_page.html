@@ -69,15 +69,14 @@
     </div>
     </div>
 
-    user_message.user_post
-
-    <div>
-    <ol>
     {% for user in users %}
-        <li><a href="{{ user.profile_url() }}">{{ user.name }}</a></li>
+             <div style="width: 50%; margin: auto;">
+                <ul class="list-group">
+                    <li class="list-group-item"><a href="{{ user.profile_url() }}">{{ user.name }}</a></li>
+                </ul>
+             </div>
     {% endfor %}
-    </ol>
-    </div>
+
 
     <div class="row">
       <div class="col-md-4 mb-5">

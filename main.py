@@ -23,7 +23,9 @@ def index():
         )
         return response
 
-    return render_template("main_page.html", user=user)
+    users = db.query(User).all()
+
+    return render_template("main_page.html", users=users, user=user)
 
 
 @app.route("/", methods=["POST"])
@@ -43,7 +45,7 @@ def index_post():
     db.add(user)
     db.commit()
 
-    return render_template("main_page.html", user=user)
+    return render_template("main_page.html", user=user, user_post=user_post)
 
 
 @app.route("/login")
@@ -239,13 +241,13 @@ def converter_post():
     uganil = False
     if str(enota) == "miles":
         uganil = True
-        answer = stevilo / 1609
+        answer = round(stevilo / 1609, 2)
     elif str(enota) == "yards":
         uganil = True
-        answer = stevilo * 1.094
+        answer = round(stevilo * 1.094, 2)
     elif str(enota) == "foots":
         uganil = True
-        answer = stevilo * 3.281
+        answer = round(stevilo * 3.281, 2)
 
     return render_template("converter.html", uganil=uganil, stevilo=stevilo, enota=enota, user=user, answer=answer)
 
